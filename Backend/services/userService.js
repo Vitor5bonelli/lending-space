@@ -46,10 +46,39 @@ async function deleteUser(userId) {
     }
 }
 
+async function getUserItems(userId) {
+    try {
+        const user = await User.findById(userId).populate('lendables');
+        if (!user) {
+            throw new Error('User not found');
+        }
+        return user.lendables;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
+async function getUserItemByName(userId, itemName) {
+    try {
+        const user = await User.findById(userId).populate({
+            path: 'lendables',
+            match: { nome: itemName }
+        });
+        if (!user) {
+            throw new Error('User not found');
+        }
+        return user.lendables.find(item => item.nome === itemName);
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
 module.exports = {
     createUser,
     getUsers,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+    getUserItems,
+    getUserItemByName
 };

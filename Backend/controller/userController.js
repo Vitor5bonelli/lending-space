@@ -59,6 +59,29 @@ async function deleteUser(req, res) {
     }
 }
 
+async function getUserItems(req, res) {
+    const userId = req.params.id;
+    try {
+        const userItems = await userService.getUserItems(userId);
+        res.status(200).json(userItems);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+async function getUserItemByName(req, res) {
+    const userId = req.params.id; 
+    const itemName = req.params.name;
+    try {
+        const userItem = await userService.getUserItemByName(userId, itemName);
+        if (!userItem) {
+            return res.status(404).json({ message: 'Item not found for this user' });
+        }
+        res.status(200).json(userItem);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
 
 
 module.exports = {
@@ -66,5 +89,7 @@ module.exports = {
     getUsers,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+    getUserItems,
+    getUserItemByName
 };
