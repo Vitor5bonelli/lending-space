@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const lendingSchema = new mongoose.Schema({
   idDono: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   idMutuario: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-  itemId: { type: mongoose.Schema.Types.ObjectId, ref: 'Item', required: true }, // Novo campo para referenciar o item emprestado
+  itemId: { type: mongoose.Schema.Types.ObjectId, ref: 'Item', required: true }, 
   dataDevolucao: {
     type: Date,
     required: true
