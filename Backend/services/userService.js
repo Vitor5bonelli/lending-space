@@ -1,4 +1,5 @@
 const User = require('../model/User');
+const Lending = require('../model/Lending');
 
 
 async function createUser(userData) {
@@ -73,6 +74,26 @@ async function getUserItemByName(userId, itemName) {
     }
 }
 
+async function getUserLending(userId, lendingId) {
+    try {
+        const lending = await Lending.findOne({ _id: lendingId, idDono: userId });
+        return lending;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
+async function getAllUserLendings(userId) {
+    try {
+        const lendings = await Lending.find({ idDono: userId });
+        return lendings;
+    } catch (error) {
+        throw new Error(error.message);
+    }
+}
+
+
+
 module.exports = {
     createUser,
     getUsers,
@@ -80,5 +101,7 @@ module.exports = {
     updateUser,
     deleteUser,
     getUserItems,
-    getUserItemByName
+    getUserItemByName,
+    getUserLending,
+    getAllUserLendings
 };

@@ -20,7 +20,7 @@ async function getUsers(req, res) {
 }
 
 async function getUserById(req, res) {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     try {
         const user = await userService.getUserById(userId);
         if (!user) {
@@ -33,7 +33,7 @@ async function getUserById(req, res) {
 }
 
 async function updateUser(req, res) {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     const userData = req.body;
     try {
         const updatedUser = await userService.updateUser(userId, userData);
@@ -47,7 +47,7 @@ async function updateUser(req, res) {
 }
 
 async function deleteUser(req, res) {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     try {
         const deletedUser = await userService.deleteUser(userId);
         if (!deletedUser) {
@@ -60,7 +60,7 @@ async function deleteUser(req, res) {
 }
 
 async function getUserItems(req, res) {
-    const userId = req.params.id;
+    const userId = req.params.userId;
     try {
         const userItems = await userService.getUserItems(userId);
         res.status(200).json(userItems);
@@ -70,7 +70,7 @@ async function getUserItems(req, res) {
 }
 
 async function getUserItemByName(req, res) {
-    const userId = req.params.id; 
+    const userId = req.params.userId; 
     const itemName = req.params.name;
     try {
         const userItem = await userService.getUserItemByName(userId, itemName);
@@ -78,6 +78,30 @@ async function getUserItemByName(req, res) {
             return res.status(404).json({ message: 'Item not found for this user' });
         }
         res.status(200).json(userItem);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+async function getUserLending(req, res) {
+    const userId = req.params.userId;
+    const lendingId = req.params.lendingId;
+    try {
+        const lending = await userService.getUserLending(userId, lendingId);
+        if (!lending) {
+            return res.status(404).json({ message: 'Lending not found for this user' });
+        }
+        res.status(200).json(lending);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+
+async function getAllUserLendings(req, res) {
+    const userId = req.params.userId;
+    try {
+        const lendings = await userService.getAllUserLendings(userId);
+        res.status(200).json(lendings);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
@@ -91,5 +115,7 @@ module.exports = {
     updateUser,
     deleteUser,
     getUserItems,
-    getUserItemByName
+    getUserItemByName,
+    getUserLending,
+    getAllUserLendings
 };
