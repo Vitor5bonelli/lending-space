@@ -1,9 +1,6 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const database = require("../db")
-const sequelize = new Sequelize('database', 'username', 'password', {
-  dialect: 'sqlite',
-  storage: 'path/to/database.sqlite'
-});
+
 
 const User = database.define('User', {
   id: {
