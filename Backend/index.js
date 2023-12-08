@@ -4,14 +4,14 @@ const mongoose = require("mongoose")
 const cors = require("cors")
 const express = require("express")
 const connect = require("./db")
+
+const userRoutes = require("./route/userRoutes")
 const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use("/user", userRoutes)
 
-const User = require("./model/User")
-const Item = require("./model/Item")
-const Lending = require("./model/Lending")
 
 connect()
 
