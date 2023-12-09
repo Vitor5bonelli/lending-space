@@ -10,7 +10,7 @@ const UserPage = () => {
     const fetchUserData = async () => {
       try {
         const response = await axios.get('URL_PARA_O_BACKEND_PARA_BUSCAR_USUARIO');
-        setUser(response.data); // Definir o usuário no estado local
+        setUser(response.data); 
       } catch (error) {
         console.error('Erro ao obter dados do usuário:', error);
       }

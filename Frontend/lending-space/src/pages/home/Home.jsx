@@ -45,9 +45,13 @@ const Home = () => {
       <header className={styles.banner}>
         <h1>Lending Space</h1>
         <div className={styles.buttons}>
+        <NavigationHandler to="/login">
             <button>Login</button>
+        </NavigationHandler>
 
+        <NavigationHandler to="/signup">
             <button>Cadastro</button>
+        </NavigationHandler>
         </div>
       </header>
 
