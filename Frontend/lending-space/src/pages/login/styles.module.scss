@@ -1,0 +1,83 @@
+/* Importa as variáveis de cores */
+@import '../../styles/sass/variables';
+
+h1 {
+    font-size: xx-large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    font-size: large;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.banner {
+  background-color: $beige-color;
+  padding: 20px;
+  display: flex;
+  justify-content: baseline;
+  align-items: center;
+  width: 100%;
+}
+
+.buttons button {
+  margin-left: 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: $teal-green-color;
+  border: none;
+  padding: 8px;
+  border-radius: 5%;
+  font-size: medium;
+  color: $brown-color;
+  font-weight: bolder;
+
+  &:hover{
+    background-color: $brown-color;
+    color: $teal-green-color;
+  }
+}
+
+.description {
+  margin-top: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.lendables {
+  margin-top: 20px;
+}
+
+.lendablesList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.lendableCard {
+  border: 1px solid $teal-green-color;
+  padding: 10px;
+  background-color: $orange-color;
+  color: white;
+}
+
+.footer {
+  margin-top: 20px;
+  background-color: $brown-color;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}

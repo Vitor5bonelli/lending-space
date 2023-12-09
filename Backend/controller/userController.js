@@ -60,14 +60,23 @@ async function deleteUser(req, res) {
 }
 
 async function getUserItems(req, res) {
-    const userId = req.params.userId;
     try {
-        const userItems = await userService.getUserItems(userId);
+        const users = await userService.getUsers();
+
+        const userItems = users.map(user => {
+            return {
+                userId: user._id,
+                nome: user.nome,
+                lendables: user.lendables 
+            };
+        });
+
         res.status(200).json(userItems);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 }
+
 
 async function getUserItemByName(req, res) {
     const userId = req.params.userId; 
